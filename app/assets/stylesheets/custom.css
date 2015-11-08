@@ -1,0 +1,27 @@
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+}
+
+.content {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+h1.headline {
+  font-weight: 600;
+  font-size: 5em;
+}
+
+.word-title {
+  text-align: right;
+}
+
+div.word-desc {
+  margin-top: 32px;
+  margin-left: 1em;
+}

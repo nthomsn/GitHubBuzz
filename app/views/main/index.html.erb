@@ -1,0 +1,21 @@
+<div class="pure-g content">
+  <div class="pure-u-1">
+    <h1 class="headline">Popular On GitHub</h1>
+  </div>
+</div>
+<% @words.each_with_index do |word, index| %>
+  <div class="pure-g content">
+      <div class="pure-u-2-5">
+          <h1 class="word-title">&ldquo;<%= word.name %>&rdquo;</h1>
+      </div>
+      <div class="pure-u-3-5">
+          <% if index == 0 %>
+          <div class="word-desc">
+            is used in <strong><%= word.uses %></strong> of the thousand most popular repo's descriptions
+          </div>
+          <% else %>
+          <div class="word-desc"> is used in <strong><%= word.uses %></strong></div>
+          <% end %>
+      </div>
+  </div>
+<% end %>

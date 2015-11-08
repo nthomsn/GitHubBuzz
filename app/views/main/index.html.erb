@@ -5,17 +5,35 @@
 </div>
 <% @words.each_with_index do |word, index| %>
   <div class="pure-g content">
-      <div class="pure-u-2-5">
-          <h1 class="word-title">&ldquo;<%= word.name %>&rdquo;</h1>
+    <div class="pure-u-2-5">
+      <h1 class="word-title">
+        <a onclick="toggle_repos(<%= index %>)">
+          &ldquo;<%= word.name %>&rdquo;
+        </a>
+      </h1>
+    </div>
+    <div class="pure-u-3-5">
+      <% if index == 0 %>
+        <div class="word-desc">
+          is used in <strong><%= word.uses %></strong> of the thousand most popular repo's descriptions
+        </div>
+      <% else %>
+        <div class="word-desc"> is used in <strong><%= word.uses %></strong></div>
+      <% end %>
+      <div id="word-<%= index %>" style="display:none">
+        <% word.repos.each do |repo| %>
+          <p><%= repo.name %></p>
+        <% end %>
       </div>
-      <div class="pure-u-3-5">
-          <% if index == 0 %>
-          <div class="word-desc">
-            is used in <strong><%= word.uses %></strong> of the thousand most popular repo's descriptions
-          </div>
-          <% else %>
-          <div class="word-desc"> is used in <strong><%= word.uses %></strong></div>
-          <% end %>
-      </div>
+    </div>
   </div>
 <% end %>
+<script>
+  function toggle_repos(id) {
+    console.log("index " + id);
+    if (document.getElementById("word-" + id).style.display === "none")
+      document.getElementById("word-" + id).style.display = "";
+    else
+      document.getElementById("word-" + id).style.display = "none";
+  }
+</script>

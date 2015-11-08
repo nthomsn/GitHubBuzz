@@ -3,9 +3,9 @@ require 'json'
 
 def get_page(p)
   url = 'https://api.github.com/search/repositories'
-  response = RestClient.get(url, {:params => 
-    {:q => 'stars:>1', 
-     :sort => 'stars', 
+  response = RestClient.get(url, {:params =>
+    {:q => 'stars:>1',
+     :sort => 'stars',
      :order => 'desc',
      :page => p,
      :per_page => 1000}})
@@ -17,6 +17,6 @@ repos = Array.new
   repos += get_page(page)["items"]
 end
 
-File.open("stars.json","w") do |f|
+File.open("./libs/tasks/stars.json","w") do |f|
   f.write(JSON.pretty_generate(repos))
 end

@@ -19,6 +19,7 @@ h1.headline {
 
 .word-title {
   text-align: right;
+  cursor: pointer;
 }
 
 div.word-desc {

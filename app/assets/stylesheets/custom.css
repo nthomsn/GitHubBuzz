@@ -22,6 +22,10 @@ h1.headline {
   cursor: pointer;
 }
 
+.word-title:hover {
+  text-decoration: underline;
+}
+
 div.word-desc {
   margin-top: 32px;
   margin-left: 1em;

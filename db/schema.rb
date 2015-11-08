@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107223924) do
+ActiveRecord::Schema.define(version: 20151108004639) do
+
+  create_table "repos", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "repos_words", id: false, force: :cascade do |t|
+    t.integer "repo_id", null: false
+    t.integer "word_id", null: false
+  end
+
+  add_index "repos_words", ["repo_id", "word_id"], name: "index_repos_words_on_repo_id_and_word_id"
+  add_index "repos_words", ["word_id", "repo_id"], name: "index_repos_words_on_word_id_and_repo_id"
 
   create_table "words", force: :cascade do |t|
     t.string   "name"

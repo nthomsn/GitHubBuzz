@@ -20,9 +20,15 @@
       <% else %>
         <div class="word-desc"> is used in <strong><%= word.uses %></strong></div>
       <% end %>
-      <div id="word-<%= index %>" style="display:none">
-        <% word.repos.each do |repo| %>
-          <p><%= repo.name %></p>
+      <div id="word-<%= index %>" style="display:none;margin-top:20px;">
+        <% word.repos.in_groups_of(2, false) do |repos_row| %>
+          <div class="pure-g content">
+            <% repos_row.each do |repo| %>
+              <div class="pure-u-12-24">
+                <%= truncate(repo.name) %>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>

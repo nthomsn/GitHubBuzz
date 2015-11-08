@@ -12,7 +12,7 @@ task :update_words => :environment do
   Repo.delete_all
   repos.each do |repo|
     next if repo['description'] == nil
-    repo_in_db = Repo.new(:name => repo['full_name'])
+    repo_in_db = Repo.new(:name => repo['full_name'], :description => repo['description'])
     repo_in_db.save
 
     repo['description'].split(" ").each do |word|
